@@ -1,0 +1,153 @@
+{
+    "overall_accuracy": "88.15%",
+    "total_test_images": 135,
+    "correct_predictions": 119,
+    "incorrect_predictions": 16,
+    "macro_metrics": {
+        "precision": "91.26%",
+        "recall": "88.15%",
+        "f1_score": "88.46%"
+    },
+    "weighted_metrics": {
+        "precision": "91.26%",
+        "recall": "88.15%",
+        "f1_score": "88.46%"
+    },
+    "per_class_accuracy": {
+        "female": {
+            "correct": 45,
+            "total": 45,
+            "accuracy": "100.0%"
+        },
+        "hybrid": {
+            "correct": 37,
+            "total": 45,
+            "accuracy": "82.2%"
+        },
+        "male": {
+            "correct": 37,
+            "total": 45,
+            "accuracy": "82.2%"
+        }
+    },
+    "confusion_matrix": [
+        [
+            45,
+            0,
+            0
+        ],
+        [
+            8,
+            37,
+            0
+        ],
+        [
+            8,
+            0,
+            37
+        ]
+    ],
+    "class_names": [
+        "female",
+        "hybrid",
+        "male"
+    ],
+    "incorrect_predictions_detail": [
+        {
+            "file": "MZ_0313.png",
+            "true_label": "hybrid",
+            "predicted_label": "female",
+            "confidence": "0.5837"
+        },
+        {
+            "file": "MZ_0317.png",
+            "true_label": "hybrid",
+            "predicted_label": "female",
+            "confidence": "0.5395"
+        },
+        {
+            "file": "MZ_0335.png",
+            "true_label": "hybrid",
+            "predicted_label": "female",
+            "confidence": "0.6670"
+        },
+        {
+            "file": "MZ_0360.png",
+            "true_label": "hybrid",
+            "predicted_label": "female",
+            "confidence": "0.8386"
+        },
+        {
+            "file": "MZ_0474.png",
+            "true_label": "hybrid",
+            "predicted_label": "female",
+            "confidence": "0.5682"
+        },
+        {
+            "file": "MZ_0481.png",
+            "true_label": "hybrid",
+            "predicted_label": "female",
+            "confidence": "0.6274"
+        },
+        {
+            "file": "MZ_0521.png",
+            "true_label": "hybrid",
+            "predicted_label": "female",
+            "confidence": "0.5814"
+        },
+        {
+            "file": "MZ_0586.png",
+            "true_label": "hybrid",
+            "predicted_label": "female",
+            "confidence": "0.5223"
+        },
+        {
+            "file": "MZ_0612.png",
+            "true_label": "male",
+            "predicted_label": "female",
+            "confidence": "0.6316"
+        },
+        {
+            "file": "MZ_0647.png",
+            "true_label": "male",
+            "predicted_label": "female",
+            "confidence": "0.5273"
+        },
+        {
+            "file": "MZ_0670.png",
+            "true_label": "male",
+            "predicted_label": "female",
+            "confidence": "0.6287"
+        },
+        {
+            "file": "MZ_0734.png",
+            "true_label": "male",
+            "predicted_label": "female",
+            "confidence": "0.6306"
+        },
+        {
+            "file": "MZ_0744.png",
+            "true_label": "male",
+            "predicted_label": "female",
+            "confidence": "0.6522"
+        },
+        {
+            "file": "MZ_0786.png",
+            "true_label": "male",
+            "predicted_label": "female",
+            "confidence": "0.6061"
+        },
+        {
+            "file": "MZ_0824.png",
+            "true_label": "male",
+            "predicted_label": "female",
+            "confidence": "0.5000"
+        },
+        {
+            "file": "MZ_0896.png",
+            "true_label": "male",
+            "predicted_label": "female",
+            "confidence": "0.5099"
+        }
+    ]
+}

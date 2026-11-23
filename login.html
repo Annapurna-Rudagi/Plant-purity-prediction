@@ -1,0 +1,322 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farmer Login | Plant Purity AI</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 22px;
+      background: #07120f;
+      color: #effff5;
+      font-family: Outfit, sans-serif;
+    }
+
+    .panel {
+      width: min(430px, 100%);
+      padding: 34px;
+      border: 1px solid #24513b;
+      border-radius: 20px;
+      background: #0d1d17;
+      box-shadow: 0 22px 70px #0008;
+    }
+
+    .brand {
+      color: #61ef9b;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    h1 {
+      font: 600 30px 'Space Grotesk', sans-serif;
+      margin: 12px 0 7px;
+    }
+
+    .sub {
+      color: #a8bdb0;
+      margin: 0 0 22px;
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 7px;
+      color: #d9e9df;
+      font-size: 14px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 13px;
+      border: 1px solid #365c48;
+      border-radius: 9px;
+      background: #09150f;
+      color: white;
+      font: inherit;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #61ef9b;
+    }
+
+    /* Password input and eye button */
+    .password-wrap {
+      position: relative;
+    }
+
+    .password-wrap input {
+      padding-right: 48px;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: grid;
+      place-items: center;
+      padding: 4px;
+      border: none;
+      background: transparent;
+      color: #9db9a7;
+      cursor: pointer;
+    }
+
+    .toggle-password:hover {
+      color: #61ef9b;
+    }
+
+    .toggle-password svg {
+      width: 21px;
+      height: 21px;
+    }
+
+    .forgot-row {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 10px;
+    }
+
+    .submit {
+      width: 100%;
+      margin-top: 21px;
+      padding: 13px;
+      border: 0;
+      border-radius: 9px;
+      background: #55e58e;
+      color: #07150c;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .submit:hover {
+      background: #70efa5;
+    }
+
+    .switch {
+      text-align: center;
+      color: #a8bdb0;
+      font-size: 14px;
+      margin: 18px 0 0;
+    }
+
+    .link {
+      border: 0;
+      background: none;
+      color: #6bf2a2;
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .link:hover {
+      text-decoration: underline;
+    }
+
+    .message {
+      min-height: 20px;
+      color: #ff9999;
+      font-size: 13px;
+      margin: 8px 0;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="panel">
+
+    <div class="brand">PLANT PURITY AI</div>
+
+    <h1 id="formTitle">Farmer Login</h1>
+
+    <p class="sub" id="formSubtitle">
+      Login to access the plant purity prediction system.
+    </p>
+
+    <p class="message" id="message" role="alert"></p>
+
+    <!-- LOGIN FORM -->
+    <form id="loginForm">
+
+      <label for="loginEmail">Email address</label>
+      <input
+        id="loginEmail"
+        type="email"
+        autocomplete="username"
+        required
+      >
+
+      <label for="loginPassword">Password</label>
+
+      <div class="password-wrap">
+        <input
+          id="loginPassword"
+          type="password"
+          autocomplete="current-password"
+          required
+        >
+
+        <button
+          class="toggle-password"
+          type="button"
+          data-target="loginPassword"
+          aria-label="Show password"
+          title="Show password"
+        >
+          <!-- Eye icon -->
+          <svg viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="forgot-row">
+        <button class="link" type="button" id="showForgot">
+          Forgot Password?
+        </button>
+      </div>
+
+      <button class="submit" type="submit">Login</button>
+
+      <p class="switch">
+        New farmer?
+        <button class="link" type="button" id="showRegister">
+          Create account
+        </button>
+      </p>
+
+    </form>
+
+    <!-- REGISTRATION FORM -->
+    <form id="registerForm" class="hidden">
+
+      <label for="farmerName">Farmer name</label>
+      <input
+        id="farmerName"
+        maxlength="100"
+        autocomplete="name"
+        required
+      >
+
+      <label for="registerEmail">Email address</label>
+      <input
+        id="registerEmail"
+        type="email"
+        autocomplete="email"
+        required
+      >
+
+      <label for="registerPassword">Password (minimum 8 characters)</label>
+
+      <div class="password-wrap">
+        <input
+          id="registerPassword"
+          type="password"
+          minlength="8"
+          autocomplete="new-password"
+          required
+        >
+
+        <button
+          class="toggle-password"
+          type="button"
+          data-target="registerPassword"
+          aria-label="Show password"
+          title="Show password"
+        >
+          <svg viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+        </button>
+      </div>
+
+      <button class="submit" type="submit">Register</button>
+
+      <p class="switch">
+        Already registered?
+        <button class="link" type="button" id="showLogin">
+          Login
+        </button>
+      </p>
+
+    </form>
+
+    <!-- FORGOT PASSWORD FORM -->
+    <form id="forgotForm" class="hidden">
+
+      <label for="forgotEmail">Registered email address</label>
+      <input
+        id="forgotEmail"
+        type="email"
+        autocomplete="email"
+        placeholder="Enter your registered email"
+        required
+      >
+
+      <button class="submit" type="submit">
+        Send Reset Link
+      </button>
+
+      <p class="switch">
+        <button class="link" type="button" id="backToLogin">
+          Back to Login
+        </button>
+      </p>
+
+    </form>
+
+  </main>
+
+  <script src="/auth.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Genetic Purity AI Classifier</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="ambient-glow glow-top"></div>
+  <div class="ambient-glow glow-bottom"></div>
+
+  <main class="dashboard-container">
+
+    <header class="minimal-header">
+      <div class="status-badge">
+        <span class="pulse-dot"></span>
+        <span>MOBILENETV2 CLASSIFIER — LIVE MODEL, NO SIMULATED RESULTS</span>
+      </div>
+      <h1>SEEDLING <span class="neon-text">PURITY CLASSIFIER</span></h1>
+      <p class="subtitle">Upload a maize seedling image to classify it as Female, Hybrid, or Male</p>
+      <a href="model_performance.html" class="performance-link">
+    📊 VIEW MODEL PERFORMANCE
+</a>
+    </header>
+
+    <section class="upload-section">
+      <div class="drop-zone" id="dropZone">
+        <input type="file" id="fileInput" accept=".jpg,.jpeg,.png" hidden>
+        <div class="drop-zone-content">
+          <div class="scanner-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 7V5a2 2 0 012-2h2M17 3h2a2 2 0 012 2v2M21 17v2a2 2 0 01-2 2h-2M7 21H5a2 2 0 01-2-2v-2" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 12l3 3 7-7" />
+            </svg>
+            <div class="icon-glow"></div>
+          </div>
+          <h2 class="drop-title">Drag & Drop a Seedling Image Here</h2>
+          <p class="browse-text">or <span class="browse-link" id="browseBtn">Click to Browse</span></p>
+          <div class="format-badge">Accepted formats: JPG, JPEG, PNG</div>
+        </div>
+        <div class="scan-overlay" id="scanOverlay">
+          <div class="laser-scanner"></div>
+          <div class="scan-text" id="scanStatusText">RUNNING MODEL INFERENCE...</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="results-section hidden" id="resultsSection">
+
+      <div class="results-grid" id="validResultGrid">
+        <div class="glass-card preview-card">
+          <div class="card-header">
+            <h3>SPECIMEN CAPTURE</h3>
+            <span class="status-pill success">Prediction Received</span>
+          </div>
+          <div class="preview-box">
+            <img id="imagePreview" src="" alt="Uploaded specimen">
+            <div class="cyber-corners"><span></span><span></span><span></span><span></span></div>
+          </div>
+          <div class="specimen-meta">
+            <div class="meta-item"><span class="meta-label">File Name:</span><span class="meta-val" id="metaFilename">—</span></div>
+            <div class="meta-item"><span class="meta-label">Model Confidence:</span><span class="meta-val plant-yes" id="metaConfidence">—</span></div>
+          </div>
+        </div>
+
+        <div class="glass-card chart-card">
+          <div class="card-header">
+            <h3>CONFIDENCE VISUALIZATION</h3>
+            <span class="ai-tag">MODEL OUTPUT</span>
+          </div>
+          <div class="donut-container">
+            <svg class="donut-svg" viewBox="0 0 200 200">
+              <defs>
+                <linearGradient id="neonGreenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#39FF14" />
+                  <stop offset="100%" stop-color="#00C853" />
+                </linearGradient>
+              </defs>
+              <circle class="donut-track" cx="100" cy="100" r="75"></circle>
+              <circle class="donut-pure" id="donutArc" cx="100" cy="100" r="75"></circle>
+            </svg>
+            <div class="donut-center">
+              <span class="confidence-val" id="centerConfidence">—</span>
+              <span class="confidence-label">TOP CLASS CONFIDENCE</span>
+            </div>
+          </div>
+          <div class="chart-legend" id="probLegend"></div>
+        </div>
+
+        <div class="glass-card summary-card">
+          <div class="card-header">
+            <h3>ANALYSIS SUMMARY</h3>
+          </div>
+          <div class="prediction-highlight" id="predictionHighlight">
+            <span class="pred-label">FINAL PREDICTION</span>
+            <h2 class="pred-result" id="finalPredictionText">—</h2>
+          </div>
+          <p class="result-note" id="resultNote"></p>
+          <button class="reset-btn" id="resetBtn">TEST ANOTHER SPECIMEN</button>
+        </div>
+      </div>
+
+      <div class="glass-card error-card hidden" id="errorCard">
+        <div class="error-header">
+          <span class="status-pill rejected" id="errorPillLabel">REQUEST FAILED</span>
+        </div>
+        <div class="error-body">
+          <div class="error-icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="error-icon">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+          </div>
+          <div class="error-content">
+            <h2 class="error-title" id="errorTitle">Could Not Get a Prediction</h2>
+            <p class="error-desc" id="errorMsg"></p>
+          </div>
+        </div>
+        <div class="error-footer">
+          <button class="reset-btn error-btn" id="resetBtnError">TRY AGAIN</button>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

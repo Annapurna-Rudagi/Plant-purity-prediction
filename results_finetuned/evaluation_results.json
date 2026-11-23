@@ -1,0 +1,63 @@
+{
+    "overall_accuracy": "99.26%",
+    "total_test_images": 135,
+    "correct_predictions": 134,
+    "incorrect_predictions": 1,
+    "macro_metrics": {
+        "precision": "99.28%",
+        "recall": "99.26%",
+        "f1_score": "99.26%"
+    },
+    "weighted_metrics": {
+        "precision": "99.28%",
+        "recall": "99.26%",
+        "f1_score": "99.26%"
+    },
+    "per_class_accuracy": {
+        "female": {
+            "correct": 45,
+            "total": 45,
+            "accuracy": "100.0%"
+        },
+        "hybrid": {
+            "correct": 44,
+            "total": 45,
+            "accuracy": "97.8%"
+        },
+        "male": {
+            "correct": 45,
+            "total": 45,
+            "accuracy": "100.0%"
+        }
+    },
+    "confusion_matrix": [
+        [
+            45,
+            0,
+            0
+        ],
+        [
+            0,
+            44,
+            1
+        ],
+        [
+            0,
+            0,
+            45
+        ]
+    ],
+    "class_names": [
+        "female",
+        "hybrid",
+        "male"
+    ],
+    "incorrect_predictions_detail": [
+        {
+            "file": "MZ_0521.png",
+            "true_label": "hybrid",
+            "predicted_label": "male",
+            "confidence": "0.4199"
+        }
+    ]
+}
